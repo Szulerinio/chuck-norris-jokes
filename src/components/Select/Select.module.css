@@ -1,0 +1,42 @@
+.container {
+  border: 2px solid var(--gray-1);
+  border-radius: 7px;
+  background-color: var(--white);
+  flex-direction: column;
+  padding: 0 0.8rem;
+}
+.container--dark {
+  border-color: var(--dark);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.current {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.8rem;
+  padding: 1.8rem 1rem 1.5rem;
+  color: var(--gray-1);
+}
+
+.container--dark > .current {
+  color: var(--dark);
+}
+.radio {
+  display: none;
+}
+.option {
+  display: inline-block;
+  font-size: 1.8rem;
+  padding: 1.8rem 1rem 1.5rem;
+  border-radius: 7px;
+  color: var(--dark);
+  width: 100%;
+}
+
+.option:hover {
+  background-color: var(--gray-1);
+}
