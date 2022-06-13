@@ -7,12 +7,14 @@ const Select = ({
   name,
   nameOnAction,
   onChange,
+  style,
 }: {
   value: string;
   options: string[];
   name: string;
   nameOnAction: string;
   onChange: (value: string) => void;
+  style?: {};
 }): JSX.Element => {
   const [isExpanded, setIsExpanded] = useState(false);
   const handleChange = (value: string) => {
@@ -56,6 +58,7 @@ const Select = ({
       className={`${styles.container} ${
         value !== "" && !isExpanded ? styles["container--dark"] : ""
       }`}
+      style={style}
     >
       <div
         className={styles.current}

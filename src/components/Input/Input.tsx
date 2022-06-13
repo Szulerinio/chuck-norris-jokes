@@ -4,13 +4,15 @@ const Input = ({
   value,
   label,
   onChange,
+  style,
 }: {
   value: string;
   label: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  style?: {};
 }): JSX.Element => {
   return (
-    <label className={styles.container}>
+    <label className={styles.container} style={style}>
       <input
         type="text"
         placeholder=" "
