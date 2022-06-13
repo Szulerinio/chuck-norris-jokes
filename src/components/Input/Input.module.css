@@ -3,8 +3,9 @@
   display: block;
 }
 .input {
-  font-size: 1.8rem;
-  padding: 2.8rem 1.8rem 0.5rem;
+  font-size: 1.7em;
+  padding: 2.8rem 1.8rem 0.6rem;
+  letter-spacing: -0.4px;
   border: 2px solid var(--gray-1);
   border-radius: 7px;
   color: var(--dark);
@@ -22,7 +23,9 @@
   padding: calc(1.8rem + 2px);
   top: 0;
   vertical-align: bottom;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+
+  letter-spacing: -0.4px;
   color: var(--gray-1);
   transform-origin: calc(1.8rem + 2px) 0;
   transition: transform 120ms ease-in;

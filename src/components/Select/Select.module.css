@@ -17,11 +17,14 @@
 .current {
   display: inline-block;
   width: 100%;
-  font-size: 1.8rem;
-  padding: 1.8rem 1rem 1.5rem;
+  font-size: 1.7rem;
+  padding: 1.8rem 1rem 1.6rem;
+  letter-spacing: -0.4px;
   color: var(--gray-1);
 }
-
+.current::first-letter {
+  text-transform: capitalize;
+}
 .container--dark > .current {
   color: var(--dark);
 }
@@ -30,12 +33,15 @@
 }
 .option {
   display: inline-block;
-  text-transform: capitalize;
-  font-size: 1.8rem;
-  padding: 1.8rem 1rem 1.5rem;
+  font-size: 1.7rem;
+  padding: 1.8rem 1rem 1.6rem;
+  letter-spacing: -0.4px;
   border-radius: 7px;
   color: var(--dark);
   width: 100%;
+}
+.option::first-letter {
+  text-transform: capitalize;
 }
 
 .option:hover {
