@@ -1,0 +1,32 @@
+.container {
+  max-width: 555px;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.image {
+  height: 130px;
+  margin-bottom: 1rem;
+}
+
+.chuck {
+  background-size: cover;
+  background-image: url("assets/Chuck.jpg");
+  background-position: 0px -30px;
+}
+.unknown {
+  background-image: url("assets/unknown_person.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.joke {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+}
