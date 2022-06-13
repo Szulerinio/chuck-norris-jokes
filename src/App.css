@@ -30,3 +30,11 @@
   font-size: 1.8rem;
   margin-bottom: 3rem;
 }
+
+.joke::before {
+  content: '"';
+}
+.joke::after {
+  content: '"';
+  position: relative;
+}
