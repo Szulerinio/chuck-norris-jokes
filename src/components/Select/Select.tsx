@@ -49,27 +49,41 @@ const Select = ({
         value={item}
         name={name}
       />
-      <span className={styles.option}>{item}</span>
+      <span className={`${styles.option} ${styles.select}`}>{item}</span>
     </label>
   ));
-  return (
+
+  const closedSelect = (
     <div
-      ref={selectRef}
-      className={`${styles.container} ${
-        value !== "" && !isExpanded ? styles["container--dark"] : ""
+      className={`${styles.closed} ${styles.select} ${
+        value !== "" ? styles.dark : ""
       }`}
-      style={style}
+      onClick={(event) => {
+        toggleIsExpanded();
+      }}
     >
+      {value === "" ? name : value}
+    </div>
+  );
+
+  const picker = (
+    <div className={`${styles.open}`}>
       <div
-        className={styles.current}
-        onClick={(event) => {
-          toggleIsExpanded();
-          if (isExpanded) onChange("");
+        className={`${styles.cancelButton} ${styles.select}`}
+        onClick={() => {
+          handleChange("");
         }}
       >
-        {isExpanded ? nameOnAction : value !== "" ? value : name}
+        {nameOnAction}
       </div>
-      {isExpanded && <div className={styles.options}>{optionItems}</div>}
+      {optionItems}
+    </div>
+  );
+
+  return (
+    <div ref={selectRef} className={styles.container} style={style}>
+      {closedSelect}
+      {isExpanded && picker}
     </div>
   );
 };
