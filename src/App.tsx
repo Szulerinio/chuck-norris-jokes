@@ -13,7 +13,7 @@ function App() {
   const [categories, setCategories] = useState([]);
   // console.log(fetchRandomJoke());
 
-  const drawJoke = useCallback((name?: string) => {
+  const drawJoke = useCallback((name?: string, category?: string) => {
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
         setJoke(res.joke);
@@ -23,7 +23,7 @@ function App() {
     const nameArray = name.trim().split(" ");
     const lastName = nameArray.pop();
     const firstName = nameArray.join("%20");
-    fetchRandomJoke(firstName, lastName).then((res) => {
+    fetchRandomJoke(firstName, lastName, category).then((res) => {
       setJoke(res.joke);
     });
   }, []);
@@ -59,7 +59,7 @@ function App() {
         <Button
           color={"dark"}
           onClick={() => {
-            drawJoke(name);
+            drawJoke(name, type);
           }}
         >
           {`Draw a random ${name === "" ? "Chuck Norris" : name} Joke`}

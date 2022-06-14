@@ -1,11 +1,16 @@
-const fetchRandomJoke = async (firstname?: string, lastname?: string) => {
+const fetchRandomJoke = async (
+  firstname?: string,
+  lastname?: string,
+  category?: string
+) => {
   const lastNameParameter = lastname ? `&lastName=${lastname}` : "";
   const firstNameParameter = firstname
     ? `&firstName=${firstname}`
     : lastname
     ? "&firstName="
     : "";
-  const url = `http://api.icndb.com/jokes/random?escape=javascript&${firstNameParameter}${lastNameParameter}`;
+  const limit = category ? `&limitTo=[${category}]` : "";
+  const url = `http://api.icndb.com/jokes/random?escape=javascript${limit}${firstNameParameter}${lastNameParameter}`;
   console.log(url);
 
   return fetch(url)
