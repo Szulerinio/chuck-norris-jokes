@@ -23,6 +23,14 @@
   background-position: center;
 }
 
+@media screen and (max-width: 440px) {
+  .chuck {
+    background-size: cover;
+    background-image: url("assets/Chuck.jpg");
+    background-position: 0px 0px;
+  }
+}
+
 .joke {
   font-style: italic;
   font-weight: 600;

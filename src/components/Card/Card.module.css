@@ -6,3 +6,8 @@
   border-radius: 7px;
   box-shadow: #0002 0 0 5px;
 }
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 50px 10vw;
+  }
+}
