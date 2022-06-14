@@ -9,6 +9,10 @@
   font-size: 1.7rem;
   letter-spacing: -0.4px;
 }
+.button.disabled {
+  cursor: default;
+}
+
 .button--wide {
   width: 100%;
 }

@@ -1,3 +1,4 @@
+const baseUrl = "http://api.icndb.com/jokes/random";
 const fetchRandomJoke = async (
   firstname?: string,
   lastname?: string,
@@ -10,7 +11,7 @@ const fetchRandomJoke = async (
     ? "&firstName="
     : "";
   const limit = category ? `&limitTo=[${category}]` : "";
-  const url = `http://api.icndb.com/jokes/random?escape=javascript${limit}${firstNameParameter}${lastNameParameter}`;
+  const url = `${baseUrl}?escape=javascript${limit}${firstNameParameter}${lastNameParameter}`;
   console.log(url);
 
   return fetch(url)
@@ -30,4 +31,14 @@ const fetchCategories = async () => {
     });
 };
 
-export { fetchRandomJoke, fetchCategories };
+const fetchMultipleJokes = async (amount: number) => {
+  const url = baseUrl + `/${amount}?escape=javascript`;
+  return fetch(url)
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.type === "success") return response.value;
+      else throw new Error("response");
+    });
+};
+
+export { fetchRandomJoke, fetchCategories, fetchMultipleJokes };

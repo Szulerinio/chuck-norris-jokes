@@ -1,0 +1,53 @@
+.container {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 50%;
+  background-color: var(--gray-2);
+  border-radius: 7px;
+}
+.input {
+  font-size: 1.7em;
+  letter-spacing: -0.4px;
+  background-color: var(--gray-2);
+  text-align: center;
+  border: none;
+  color: var(--dark);
+  border: none;
+
+  width: 100%;
+}
+input:focus {
+  border: none;
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+.sign {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.sign > circle {
+  fill: none;
+}
+
+.sign_container {
+  padding: 0 0.4px;
+}
+
+.sign_container:hover > .sign > path {
+  stroke-width: 6;
+}
+.sign_container:hover > .sign > circle {
+  fill: var(--gray-1);
+  stroke-width: 0;
+}

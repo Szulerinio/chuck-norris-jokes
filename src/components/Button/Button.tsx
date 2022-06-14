@@ -5,18 +5,28 @@ const Button = ({
   wide,
   onClick,
   style,
+  className,
+  disabled,
 }: {
-  children: string;
+  children: string | JSX.Element;
   wide?: boolean;
   color: "dark" | "red" | "gray";
   onClick: () => void;
   style?: {};
+  className?: string;
+  disabled?: boolean;
 }): JSX.Element => {
   const classes = `${styles.button} ${wide ? styles["button--wide"] : ""} ${
-    styles[`button--${color}`]
-  }`;
+    disabled === true ? styles.disabled : ""
+  } ${styles[`button--${color}`]} ${className}`;
   return (
-    <button className={classes} onClick={onClick} style={style}>
+    <button
+      className={classes}
+      onClick={() => {
+        !disabled && onClick();
+      }}
+      style={style}
+    >
       {children}
     </button>
   );
