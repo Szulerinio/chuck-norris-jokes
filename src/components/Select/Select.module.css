@@ -2,6 +2,28 @@
   flex-direction: column;
   position: relative;
 }
+.container::before {
+  top: 0;
+  right: 2rem;
+  height: 100%;
+  width: 1rem;
+  position: absolute;
+  content: "";
+  background-image: url("./../../assets/arrow.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  z-index: 100;
+  pointer-events: none;
+
+  transition: transform 120ms ease-in, opacity 120ms ease-in;
+}
+.container[data-isExpanded="true"]::before {
+  transform: translate(-0.5rem, 0) rotate(180deg);
+  opacity: 1;
+}
+
 .select {
   display: inline-block;
   width: 100%;

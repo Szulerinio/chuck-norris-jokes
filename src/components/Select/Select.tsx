@@ -81,7 +81,12 @@ const Select = ({
   );
 
   return (
-    <div ref={selectRef} className={styles.container} style={style}>
+    <div
+      ref={selectRef}
+      data-isExpanded={isExpanded}
+      className={styles.container}
+      style={style}
+    >
       {closedSelect}
       {isExpanded && picker}
     </div>
