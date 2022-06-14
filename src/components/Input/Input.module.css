@@ -12,7 +12,8 @@
   width: 100%;
 }
 
-.input:focus {
+.input:focus,
+.input:not(:placeholder-shown) {
   border-color: var(--dark);
 }
 
