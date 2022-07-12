@@ -9,15 +9,15 @@ const Select = ({
   onChange,
   style,
 }: {
-  value: string;
+  value: string[];
   options: string[];
   name: string;
   nameOnAction: string;
-  onChange: (value: string) => void;
+  onChange: (value?: string) => void;
   style?: {};
 }): JSX.Element => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const handleChange = (value: string) => {
+  const handleChange = (value?: string) => {
     toggleIsExpanded();
     onChange(value);
   };
@@ -56,13 +56,13 @@ const Select = ({
   const closedSelect = (
     <div
       className={`${styles.closed} ${styles.select} ${
-        value !== "" ? styles.dark : ""
+        value.length > 0 ? styles.dark : ""
       }`}
       onClick={(event) => {
         toggleIsExpanded();
       }}
     >
-      {value === "" ? name : value}
+      {value.length === 0 ? name : value.join(", ")}
     </div>
   );
 

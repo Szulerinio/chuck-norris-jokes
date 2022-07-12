@@ -2,7 +2,7 @@ const baseUrl = "http://api.icndb.com/jokes/random";
 const fetchRandomJoke = async (
   firstname?: string,
   lastname?: string,
-  category?: string
+  category: string[] = []
 ) => {
   const lastNameParameter = lastname ? `&lastName=${lastname}` : "";
   const firstNameParameter = firstname
@@ -10,7 +10,8 @@ const fetchRandomJoke = async (
     : lastname
     ? "&firstName="
     : "";
-  const limit = category ? `&limitTo=[${category}]` : "";
+
+  const limit = category?.length > 0 ? `&limitTo=[${category?.join(`,`)}]` : "";
   const url = `${baseUrl}?escape=javascript${limit}${firstNameParameter}${lastNameParameter}`;
 
   return fetch(url)

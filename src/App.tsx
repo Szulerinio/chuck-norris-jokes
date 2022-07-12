@@ -14,7 +14,7 @@ import {
 import { downloadBlob } from "./functions/download";
 function App() {
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState<string[]>([]);
   const [joke, setJoke] = useState("");
   const [categories, setCategories] = useState([]);
   const [numberOfJokesToFetch, setNumberOfJokesToFetch] = useState(0);
@@ -38,8 +38,16 @@ function App() {
         : parseInt(value);
     });
   };
+  const handleTypeChange = (value?: string) => {
+    if (!value) {
+      setType([]);
+    } else {
+      setType([value]);
+    }
+  };
+  console.log(type);
 
-  const drawJoke = useCallback((name?: string, category?: string) => {
+  const drawJoke = useCallback((name?: string, category?: string[]) => {
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
         setJoke(res.joke);
@@ -79,7 +87,7 @@ function App() {
           nameOnAction={"Select category"}
           options={categories}
           onChange={(value) => {
-            setType(value);
+            handleTypeChange(value);
           }}
         ></Select>
         <Input
