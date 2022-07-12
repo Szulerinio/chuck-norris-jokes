@@ -1,5 +1,6 @@
 import styles from "./NumberPicker.module.css";
 import Button from "./../Button/Button";
+import ButtonColors from "../Button/types";
 const NumberPicker = ({
   value,
   onChange,
@@ -13,7 +14,7 @@ const NumberPicker = ({
     <div className={styles.container}>
       <Button
         className={styles.sign_container}
-        color="gray"
+        color={ButtonColors.Gray}
         onClick={() => {
           onButtonClick(-1);
         }}
@@ -29,7 +30,7 @@ const NumberPicker = ({
       />
       <Button
         className={styles.sign_container}
-        color="gray"
+        color={ButtonColors.Gray}
         onClick={() => {
           onButtonClick(1);
         }}

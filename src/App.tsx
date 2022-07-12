@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import Button from "./components/Button/Button";
+import ButtonColors from "./components/Button/types";
 import Input from "./components/Input/Input";
 import Select from "./components/Select/Select";
 import Card from "./components/Card/Card";
@@ -92,7 +93,7 @@ function App() {
         />
         <Button
           style={{ marginBottom: "6rem" }}
-          color={"dark"}
+          color={ButtonColors.Dark}
           onClick={() => {
             drawJoke(name, type);
           }}
@@ -113,8 +114,8 @@ function App() {
           <Button
             color={
               numberOfJokesToFetch < 1 || numberOfJokesToFetch > 100
-                ? "gray"
-                : "dark"
+                ? ButtonColors.Gray
+                : ButtonColors.Dark
             }
             wide
             disabled={numberOfJokesToFetch < 1 || numberOfJokesToFetch > 100}
