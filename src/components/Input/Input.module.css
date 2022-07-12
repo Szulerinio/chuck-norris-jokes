@@ -14,7 +14,7 @@
 
 .input:focus,
 .input:not(:placeholder-shown) {
-  border-color: var(--dark);
+  border:2px solid  var(--dark);
 }
 
 .label {
