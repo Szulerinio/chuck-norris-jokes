@@ -12,7 +12,6 @@ const fetchRandomJoke = async (
     : "";
   const limit = category ? `&limitTo=[${category}]` : "";
   const url = `${baseUrl}?escape=javascript${limit}${firstNameParameter}${lastNameParameter}`;
-  console.log(url);
 
   return fetch(url)
     .then((response) => response.json())

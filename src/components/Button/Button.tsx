@@ -1,4 +1,5 @@
 import styles from "./Button.module.css";
+import ButtonColors from "./types";
 const Button = ({
   children,
   color,
@@ -10,7 +11,7 @@ const Button = ({
 }: {
   children: string | JSX.Element;
   wide?: boolean;
-  color: "dark" | "red" | "gray";
+  color: ButtonColors;
   onClick: () => void;
   style?: {};
   className?: string;

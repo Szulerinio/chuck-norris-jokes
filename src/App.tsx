@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import Button from "./components/Button/Button";
+import ButtonColors from "./components/Button/types";
 import Input from "./components/Input/Input";
 import Select from "./components/Select/Select";
 import Card from "./components/Card/Card";
@@ -17,8 +18,6 @@ function App() {
   const [joke, setJoke] = useState("");
   const [categories, setCategories] = useState([]);
   const [numberOfJokesToFetch, setNumberOfJokesToFetch] = useState(0);
-
-  // console.log(fetchRandomJoke());
 
   const handleNumberOfJokesButtonsClick = (valueChange: number) => {
     setNumberOfJokesToFetch((prev) =>
@@ -80,7 +79,6 @@ function App() {
           nameOnAction={"Select category"}
           options={categories}
           onChange={(value) => {
-            console.log("aa");
             setType(value);
           }}
         ></Select>
@@ -92,7 +90,7 @@ function App() {
         />
         <Button
           style={{ marginBottom: "6rem" }}
-          color={"dark"}
+          color={ButtonColors.Dark}
           onClick={() => {
             drawJoke(name, type);
           }}
@@ -107,14 +105,13 @@ function App() {
             }}
             onButtonClick={(valueChange: number) => {
               handleNumberOfJokesButtonsClick(valueChange);
-              console.log();
             }}
           ></NumberPicker>
           <Button
             color={
               numberOfJokesToFetch < 1 || numberOfJokesToFetch > 100
-                ? "gray"
-                : "dark"
+                ? ButtonColors.Gray
+                : ButtonColors.Dark
             }
             wide
             disabled={numberOfJokesToFetch < 1 || numberOfJokesToFetch > 100}

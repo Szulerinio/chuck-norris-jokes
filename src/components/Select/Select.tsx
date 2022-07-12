@@ -83,7 +83,7 @@ const Select = ({
   return (
     <div
       ref={selectRef}
-      data-isExpanded={isExpanded}
+      data-isexpanded={isExpanded}
       className={styles.container}
       style={style}
     >
@@ -93,4 +93,3 @@ const Select = ({
   );
 };
 export default Select;
-//TODO: add Arrow
