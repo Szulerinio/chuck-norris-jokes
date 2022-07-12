@@ -1,15 +1,8 @@
 function downloadBlob(blob: Blob, name = "jokes.txt") {
-  // Convert your blob into a Blob URL (a special url that points to an object in the browser's memory)
   const blobUrl = URL.createObjectURL(blob);
-
-  // Create a link element
   const link = document.createElement("a");
-
-  // Set link's href to point to the Blob URL
   link.href = blobUrl;
   link.download = name;
-
-  // Append link to the body
   document.body.appendChild(link);
 
   // Dispatch click event on the link
@@ -21,8 +14,6 @@ function downloadBlob(blob: Blob, name = "jokes.txt") {
       view: window,
     })
   );
-
-  // Remove link from body
   document.body.removeChild(link);
 }
 export { downloadBlob };

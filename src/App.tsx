@@ -19,8 +19,6 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [numberOfJokesToFetch, setNumberOfJokesToFetch] = useState(0);
 
-  // console.log(fetchRandomJoke());
-
   const handleNumberOfJokesButtonsClick = (valueChange: number) => {
     setNumberOfJokesToFetch((prev) =>
       prev + valueChange > 100 || prev + valueChange < 0
@@ -81,7 +79,6 @@ function App() {
           nameOnAction={"Select category"}
           options={categories}
           onChange={(value) => {
-            console.log("aa");
             setType(value);
           }}
         ></Select>
@@ -108,7 +105,6 @@ function App() {
             }}
             onButtonClick={(valueChange: number) => {
               handleNumberOfJokesButtonsClick(valueChange);
-              console.log();
             }}
           ></NumberPicker>
           <Button
