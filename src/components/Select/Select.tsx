@@ -46,7 +46,7 @@ const Select = ({
       <input
         className={styles.radio}
         type="checkbox"
-        onChange={() => handleChange(item)}
+        onChange={() => onChange(item)}
         value={item}
         name={name}
       />
