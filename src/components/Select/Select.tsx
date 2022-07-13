@@ -1,6 +1,6 @@
 import styles from "./Select.module.css";
 import { useEffect, useRef, useState } from "react";
-import CheckboxImage from "./CheckboxImage";
+import CheckboxImage from "../../assets/icons/CheckboxImage/CheckboxImage";
 
 const Select = ({
   value,
