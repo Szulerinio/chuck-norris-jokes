@@ -45,6 +45,14 @@
   position: relative;
 }
 .downloads {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   gap: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .downloads {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
