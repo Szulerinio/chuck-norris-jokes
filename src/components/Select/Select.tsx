@@ -1,5 +1,6 @@
 import styles from "./Select.module.css";
 import { useEffect, useRef, useState } from "react";
+import CheckboxImage from "../../assets/icons/CheckboxImage/CheckboxImage";
 
 const Select = ({
   value,
@@ -9,15 +10,15 @@ const Select = ({
   onChange,
   style,
 }: {
-  value: string;
+  value: string[];
   options: string[];
   name: string;
   nameOnAction: string;
-  onChange: (value: string) => void;
+  onChange: (value?: string) => void;
   style?: {};
 }): JSX.Element => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const handleChange = (value: string) => {
+  const handleChange = (value?: string) => {
     toggleIsExpanded();
     onChange(value);
   };
@@ -44,25 +45,32 @@ const Select = ({
     <label key={item}>
       <input
         className={styles.radio}
-        type="radio"
-        onChange={() => handleChange(item)}
+        type="checkbox"
+        onChange={() => onChange(item)}
         value={item}
         name={name}
       />
-      <span className={`${styles.option} ${styles.select}`}>{item}</span>
+      <span
+        className={`${styles.option} ${styles.select} ${
+          value.includes(item) ? styles.optionSelected : ""
+        }`}
+      >
+        {<CheckboxImage checked={value.includes(item)}></CheckboxImage>}
+        {item}
+      </span>
     </label>
   ));
 
   const closedSelect = (
     <div
       className={`${styles.closed} ${styles.select} ${
-        value !== "" ? styles.dark : ""
+        value.length > 0 ? styles.dark : ""
       }`}
       onClick={(event) => {
         toggleIsExpanded();
       }}
     >
-      {value === "" ? name : value}
+      {value.length === 0 ? name : value.join(", ")}
     </div>
   );
 
