@@ -60,7 +60,7 @@ function App() {
     }
     const nameArray = name.trim().split(" ");
     const lastName = nameArray.pop();
-    const firstName = nameArray.join("%20");
+    const firstName = nameArray.join(" ");
     fetchRandomJoke(firstName, lastName, category).then((res) => {
       setJoke(res.joke);
     });
