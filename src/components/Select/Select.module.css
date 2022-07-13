@@ -30,8 +30,6 @@
   border-radius: 7px;
   font-size: 1.7rem;
   letter-spacing: -0.4px;
-}
-.select::first-letter {
   text-transform: capitalize;
 }
 

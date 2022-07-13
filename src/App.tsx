@@ -42,7 +42,12 @@ function App() {
     if (!value) {
       setType([]);
     } else {
-      setType([value]);
+      setType((prevValue) => {
+        if (prevValue.indexOf(value) === -1) {
+          return [...prevValue, value];
+        }
+        return prevValue.filter((element) => element !== value);
+      });
     }
   };
   console.log(type);
