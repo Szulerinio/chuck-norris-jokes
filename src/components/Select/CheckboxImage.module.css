@@ -1,0 +1,30 @@
+.svg {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.squareChecked {
+  stroke: black;
+  stroke: var(--dark);
+  stroke-width: 2px;
+}
+
+.squareUnchecked {
+  stroke: var(--dark);
+  stroke-width: 2px;
+  fill: var(--gray-1);
+}
+
+.checkmarkBackgroundChecked {
+  fill: green;
+}
+.checkmarkBackgroundUnChecked {
+}
+
+.checkmarkChecked {
+  fill: transparent;
+}
+.checkmarkUnchecked {
+}

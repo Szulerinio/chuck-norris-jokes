@@ -1,5 +1,6 @@
 import styles from "./Select.module.css";
 import { useEffect, useRef, useState } from "react";
+import CheckboxImage from "./CheckboxImage";
 
 const Select = ({
   value,
@@ -44,12 +45,19 @@ const Select = ({
     <label key={item}>
       <input
         className={styles.radio}
-        type="radio"
+        type="checkbox"
         onChange={() => handleChange(item)}
         value={item}
         name={name}
       />
-      <span className={`${styles.option} ${styles.select}`}>{item}</span>
+      <span
+        className={`${styles.option} ${styles.select} ${
+          value.includes(item) ? styles.optionSelected : ""
+        }`}
+      >
+        {<CheckboxImage checked={value.includes(item)}></CheckboxImage>}
+        {item}
+      </span>
     </label>
   ));
 

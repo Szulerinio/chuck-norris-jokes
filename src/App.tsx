@@ -50,7 +50,6 @@ function App() {
       });
     }
   };
-  console.log(type);
 
   const drawJoke = useCallback((name?: string, category?: string[]) => {
     if (name === undefined) {
