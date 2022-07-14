@@ -1,19 +1,18 @@
 import axios from "axios";
+import randomJokeParameters from "./types";
 const baseUrl = "http://api.icndb.com/jokes/random";
 const fetchRandomJoke = async (
   firstname?: string,
   lastname?: string,
   category: string[] = []
 ) => {
-  let parameters: any = {
+  let parameters: randomJokeParameters = {
     escape: "javascript",
   };
   if (lastname) {
     parameters.lastName = lastname;
   }
   if (firstname) {
-    console.log("firstname", firstname);
-
     parameters.firstName = firstname;
   }
   if (category?.length > 0) {
