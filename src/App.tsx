@@ -16,7 +16,7 @@ function App() {
   const [name, setName] = useState("");
   const [type, setType] = useState<string[]>([]);
   const [joke, setJoke] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [numberOfJokesToFetch, setNumberOfJokesToFetch] = useState(0);
 
   const handleNumberOfJokesButtonsClick = (valueChange: number) => {
@@ -54,7 +54,11 @@ function App() {
   const drawJoke = useCallback((name?: string, category?: string[]) => {
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
-        setJoke(res.joke);
+        if (res.status === "ok") {
+          setJoke(res.data.joke);
+        } else {
+          console.log("Error:", res.data);
+        }
       });
       return;
     }
@@ -62,20 +66,31 @@ function App() {
     const lastName = nameArray.pop();
     const firstName = nameArray.join(" ");
     fetchRandomJoke(firstName, lastName, category).then((res) => {
-      setJoke(res.joke);
+      if (res.status === "ok") {
+        setJoke(res.data.joke);
+      } else {
+        console.log("Error:", res.data);
+      }
     });
   }, []);
 
   useEffect(() => {
     drawJoke();
-    fetchCategories().then((categories) => setCategories(categories));
+    fetchCategories().then((categories) => setCategories(categories.data));
   }, [drawJoke]);
 
   const downloadJokes = async (amount: number) => {
-    const file = await fetchMultipleJokes(amount)
-      .then((res) => res.map((obj: { id: number; joke: string }) => obj.joke))
-      .then((res) => new Blob(res));
-    downloadBlob(file);
+    const jokes = await fetchMultipleJokes(amount);
+
+    if (jokes.status === "ok") {
+      const file = jokes.data.map(
+        (obj: { id: number; joke: string }) => obj.joke
+      );
+      const blob = new Blob(file);
+      downloadBlob(blob);
+    } else {
+      console.log("Error:", jokes.data);
+    }
   };
 
   return (

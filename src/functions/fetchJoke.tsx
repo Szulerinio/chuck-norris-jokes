@@ -1,6 +1,6 @@
-import axios from "axios";
+import { getData, endpoints } from "./axiosClient";
 import randomJokeParameters from "./types";
-const baseUrl = "http://api.icndb.com/jokes/random";
+
 const fetchRandomJoke = async (
   firstname?: string,
   lastname?: string,
@@ -19,27 +19,17 @@ const fetchRandomJoke = async (
     parameters.limitTo = `[${category?.join(",")}]`;
   }
 
-  const response = (await axios(baseUrl, { params: parameters })).data;
-  if (response.type !== "success") throw new Error("response failed");
-  return response.value;
+  return await getData(endpoints.jokes.random(), parameters);
 };
 
 const fetchCategories = async () => {
-  const response = (await axios("http://api.icndb.com/categories")).data;
-  if (response.type !== "success") throw new Error("response failed");
-  return response.value;
+  const response = await getData(endpoints.categories, {});
+  return response;
 };
 
 const fetchMultipleJokes = async (amount: number) => {
-  const parameters = { escape: "javascript" };
-  const axiosBaseUrl = axios.create({
-    baseURL: baseUrl,
-  });
-  const response = (
-    await axiosBaseUrl.get(`/${amount}`, { params: parameters })
-  ).data;
-  if (response.type !== "success") throw new Error("response failed");
-  return response.value;
+  const parameters: randomJokeParameters = { escape: "javascript" };
+  return await getData(endpoints.jokes.random(amount), parameters);
 };
 
 export { fetchRandomJoke, fetchCategories, fetchMultipleJokes };

@@ -1,5 +1,5 @@
 type randomJokeParameters = {
-  escape: "javascript" | "html";
+  escape?: "javascript" | "html";
   lastName?: string;
   firstName?: string;
   limitTo?: string;
