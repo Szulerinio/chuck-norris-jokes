@@ -3,7 +3,7 @@ import randomJokeParameters from "./types";
 
 const axiosClient = axios.create();
 
-axiosClient.defaults.baseURL = "http://api.icndb.com";
+axiosClient.defaults.baseURL = process.env.REACT_APP_CHUCK_NORRIS_BASE_URL;
 
 const endpoints = {
   jokes: {
