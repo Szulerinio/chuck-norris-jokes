@@ -75,7 +75,7 @@ const Select = ({
   );
 
   const picker = (
-    <div className={`${styles.open}`}>
+    <div className={`${styles.dropdown} ${isExpanded ? styles.open : ""}`}>
       <div
         className={`${styles.cancelButton} ${styles.select}`}
         onClick={() => {
@@ -96,7 +96,7 @@ const Select = ({
       style={style}
     >
       {closedSelect}
-      {isExpanded && picker}
+      {picker}
     </div>
   );
 };
