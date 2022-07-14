@@ -38,18 +38,32 @@ input[type="number"] {
   width: 2.5rem;
   height: 2.5rem;
 }
-.sign > circle {
-  fill: none;
-}
-
 .sign_container {
   padding: 0 0.4px;
 }
 
-.sign_container:hover > .sign > path {
-  stroke-width: 6;
-}
-.sign_container:hover > .sign > circle {
+.sign > .circleBackground {
   fill: var(--gray-1);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.verticalPath {
+  transform-origin: 22px 0px;
+  transition: transform 0.3s ease-in-out;
+}
+.horizontalPath {
+  transform-origin: 0px 22px;
+  transition: transform 0.3s ease-out;
+}
+.sign_container:hover > .sign > .horizontalPath {
+  transform: scaleY(3);
+}
+
+.sign_container:hover > .sign > .verticalPath {
+  transform: scaleX(3);
+}
+
+.sign_container:hover > .sign > .circleBackground {
+  opacity: 1;
   stroke-width: 0;
 }
