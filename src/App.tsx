@@ -12,9 +12,11 @@ import {
   fetchMultipleJokes,
 } from "./functions/fetchJoke";
 import { downloadBlob } from "./functions/download";
+import Spinner from "./assets/icons/Spinner/Spinner";
 function App() {
   const [name, setName] = useState("");
   const [type, setType] = useState<string[]>([]);
+  const [isJokeLoading, setIsJokeLoading] = useState(false);
   const [joke, setJoke] = useState("");
   const [categories, setCategories] = useState([]);
   const [numberOfJokesToFetch, setNumberOfJokesToFetch] = useState(0);
@@ -52,17 +54,21 @@ function App() {
   };
 
   const drawJoke = useCallback((name?: string, category?: string[]) => {
+    setIsJokeLoading(true);
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
         setJoke(res.joke);
+        setIsJokeLoading(false);
       });
       return;
     }
+
     const nameArray = name.trim().split(" ");
     const lastName = nameArray.pop();
     const firstName = nameArray.join("%20");
     fetchRandomJoke(firstName, lastName, category).then((res) => {
       setJoke(res.joke);
+      setIsJokeLoading(false);
     });
   }, []);
 
@@ -83,7 +89,7 @@ function App() {
       <Card>
         <div className={`image ${name === "" ? "chuck" : "unknown"}`}></div>
 
-        <p className="joke">{joke}</p>
+        {isJokeLoading ? <Spinner /> : <p className="joke">{joke}</p>}
         <Select
           style={{ marginBottom: "1.6rem" }}
           value={type}
