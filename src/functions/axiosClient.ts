@@ -1,5 +1,5 @@
 import axios from "axios";
-import randomJokeParameters from "./types";
+import { RandomJokeParameters } from "./types";
 
 const axiosClient = axios.create();
 
@@ -15,7 +15,7 @@ const endpoints = {
   categories: "/categories",
 };
 
-const getData = async (endpoint: string, params: randomJokeParameters) => {
+const getData = async (endpoint: string, params: RandomJokeParameters) => {
   try {
     const response = await axiosClient.get(endpoint, {
       params: params,

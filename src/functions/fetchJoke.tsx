@@ -1,12 +1,12 @@
 import { getData, endpoints } from "./axiosClient";
-import randomJokeParameters from "./types";
+import { RandomJokeParameters } from "./types";
 
 const fetchRandomJoke = async (
   firstname?: string,
   lastname?: string,
   category: string[] = []
 ) => {
-  let parameters: randomJokeParameters = {
+  let parameters: RandomJokeParameters = {
     escape: "javascript",
   };
   if (lastname) {
@@ -28,7 +28,7 @@ const fetchCategories = async () => {
 };
 
 const fetchMultipleJokes = async (amount: number) => {
-  const parameters: randomJokeParameters = { escape: "javascript" };
+  const parameters: RandomJokeParameters = { escape: "javascript" };
   return await getData(endpoints.jokes.random(amount), parameters);
 };
 
