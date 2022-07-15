@@ -67,3 +67,10 @@ input[type="number"] {
   opacity: 1;
   stroke-width: 0;
 }
+.circleStroke {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.signContainer:hover .circleStroke {
+  opacity: 0;
+}
