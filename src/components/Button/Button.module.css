@@ -9,6 +9,7 @@
   font-size: 1.7rem;
   letter-spacing: -0.4px;
   overflow-wrap: break-word;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
 }
 .button.disabled {
   cursor: default;
