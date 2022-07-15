@@ -13,7 +13,7 @@ const NumberPicker = ({
   return (
     <div className={styles.container}>
       <Button
-        className={styles.sign_container}
+        className={styles.signContainer}
         color={ButtonColors.Gray}
         onClick={() => {
           onButtonClick(-1);
@@ -29,7 +29,7 @@ const NumberPicker = ({
         className={styles.input}
       />
       <Button
-        className={styles.sign_container}
+        className={styles.signContainer}
         color={ButtonColors.Gray}
         onClick={() => {
           onButtonClick(1);

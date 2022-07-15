@@ -38,7 +38,7 @@ input[type="number"] {
   width: 2.5rem;
   height: 2.5rem;
 }
-.sign_container {
+.signContainer {
   padding: 0 0.4px;
 }
 
@@ -55,15 +55,15 @@ input[type="number"] {
   transform-origin: 0px 22px;
   transition: transform 0.3s ease-out;
 }
-.sign_container:hover .horizontalPath {
+.signContainer:hover .horizontalPath {
   transform: scaleY(3);
 }
 
-.sign_container:hover .verticalPath {
+.signContainer:hover .verticalPath {
   transform: scaleX(3);
 }
 
-.sign_container:hover .circleBackground {
+.signContainer:hover .circleBackground {
   opacity: 1;
   stroke-width: 0;
 }
