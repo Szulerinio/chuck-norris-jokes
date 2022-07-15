@@ -42,7 +42,7 @@ input[type="number"] {
   padding: 0 0.4px;
 }
 
-.sign > .circleBackground {
+.circleBackground {
   fill: var(--gray-1);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -55,15 +55,15 @@ input[type="number"] {
   transform-origin: 0px 22px;
   transition: transform 0.3s ease-out;
 }
-.sign_container:hover > .sign > .horizontalPath {
+.sign_container:hover .horizontalPath {
   transform: scaleY(3);
 }
 
-.sign_container:hover > .sign > .verticalPath {
+.sign_container:hover .verticalPath {
   transform: scaleX(3);
 }
 
-.sign_container:hover > .sign > .circleBackground {
+.sign_container:hover .circleBackground {
   opacity: 1;
   stroke-width: 0;
 }
