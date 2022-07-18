@@ -1,5 +1,5 @@
 import axios from "axios";
-import { RandomJokeParameters } from "./types";
+import { RandomJokeParameters, ResponseStatus } from "./types";
 
 const axiosClient = axios.create();
 
@@ -27,18 +27,17 @@ const getData = async (endpoint: string, params: RandomJokeParameters) => {
     if (responseData.type !== "success") {
       throw new Error("response failed");
     }
-    return { status: "ok", data: responseData.value };
+    return { status: ResponseStatus.Success, data: responseData.value };
   } catch (err) {
     if (axios.isAxiosError(err)) {
       if (err.response) {
-        return { status: "error", data: err.response.data };
+        return { status: ResponseStatus.Error, data: err.response.data };
       } else if (err.request) {
-        return { status: "error", data: err.request.data };
-      } else {
-        return { status: "error", data: err.message };
+        return { status: ResponseStatus.Error, data: err.request.data };
       }
+      return { status: ResponseStatus.Error, data: err.message };
     }
-    return { status: "error", data: err };
+    return { status: ResponseStatus.Error, data: err };
   }
 };
 

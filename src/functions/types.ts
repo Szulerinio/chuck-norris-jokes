@@ -4,3 +4,8 @@ export interface RandomJokeParameters {
   firstName?: string;
   limitTo?: string;
 }
+
+export enum ResponseStatus {
+  Success,
+  Error,
+}

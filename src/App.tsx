@@ -12,6 +12,7 @@ import {
   fetchMultipleJokes,
 } from "./functions/fetchJoke";
 import { downloadBlob } from "./functions/download";
+import { ResponseStatus } from "./functions/types";
 function App() {
   const [name, setName] = useState("");
   const [type, setType] = useState<string[]>([]);
@@ -54,7 +55,7 @@ function App() {
   const drawJoke = useCallback((name?: string, category?: string[]) => {
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
-        if (res.status === "ok") {
+        if (res.status === ResponseStatus.Success) {
           setJoke(res.data.joke);
         } else {
           console.log("Error:", res.data);
@@ -66,7 +67,7 @@ function App() {
     const lastName = nameArray.pop();
     const firstName = nameArray.join(" ");
     fetchRandomJoke(firstName, lastName, category).then((res) => {
-      if (res.status === "ok") {
+      if (res.status === ResponseStatus.Success) {
         setJoke(res.data.joke);
       } else {
         console.log("Error:", res.data);
@@ -82,7 +83,7 @@ function App() {
   const downloadJokes = async (amount: number) => {
     const jokes = await fetchMultipleJokes(amount);
 
-    if (jokes.status === "ok") {
+    if (jokes.status === ResponseStatus.Success) {
       const file = jokes.data.map(
         (obj: { id: number; joke: string }) => obj.joke
       );
