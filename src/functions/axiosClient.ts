@@ -1,21 +1,10 @@
 import axios from "axios";
 import { RandomJokeParameters, ResponseStatus } from "./types";
+import { endpoints } from "../constants";
 
 const axiosClient = axios.create();
 
 axiosClient.defaults.baseURL = process.env.REACT_APP_CHUCK_NORRIS_BASE_URL;
-
-const endpoints = {
-  jokes: {
-    random: (amount?: number) => {
-      if (amount === undefined) {
-        return "/jokes/random";
-      }
-      return `/jokes/random/${amount}`;
-    },
-  },
-  categories: "/categories",
-};
 
 const getData = async (endpoint: string, params: RandomJokeParameters) => {
   try {
