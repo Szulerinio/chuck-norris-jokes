@@ -8,7 +8,9 @@ axiosClient.defaults.baseURL = process.env.REACT_APP_CHUCK_NORRIS_BASE_URL;
 const endpoints = {
   jokes: {
     random: (amount?: number) => {
-      if (amount === undefined) return "/jokes/random";
+      if (amount === undefined) {
+        return "/jokes/random";
+      }
       return `/jokes/random/${amount}`;
     },
   },
@@ -22,7 +24,9 @@ const getData = async (endpoint: string, params: RandomJokeParameters) => {
     });
     const responseData = response.data;
 
-    if (responseData.type !== "success") throw new Error("response failed");
+    if (responseData.type !== "success") {
+      throw new Error("response failed");
+    }
     return { status: "ok", data: responseData.value };
   } catch (err) {
     if (axios.isAxiosError(err)) {
@@ -30,7 +34,9 @@ const getData = async (endpoint: string, params: RandomJokeParameters) => {
         return { status: "error", data: err.response.data };
       } else if (err.request) {
         return { status: "error", data: err.request.data };
-      } else return { status: "error", data: err.message };
+      } else {
+        return { status: "error", data: err.message };
+      }
     }
     return { status: "error", data: err };
   }
