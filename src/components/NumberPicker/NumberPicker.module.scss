@@ -1,8 +1,9 @@
+@import "./../../variables";
 .container {
   display: grid;
   flex-direction: row;
   grid-template-columns: 1fr 1fr 1fr;
-  background-color: var(--gray-2);
+  background-color: $gray-2;
   height: 5.3rem;
   max-width: 20rem;
   margin: auto;
@@ -11,10 +12,10 @@
 .input {
   font-size: 1.7em;
   letter-spacing: -0.4px;
-  background-color: var(--gray-2);
+  background-color: $gray-2;
   text-align: center;
   border: none;
-  color: var(--dark);
+  color: $dark;
   border: none;
 
   width: 100%;
@@ -43,7 +44,7 @@ input[type="number"] {
 }
 
 .circleBackground {
-  fill: var(--gray-1);
+  fill: $gray-1;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }

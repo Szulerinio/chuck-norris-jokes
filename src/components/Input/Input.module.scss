@@ -1,3 +1,4 @@
+@import "./../../variables";
 .container {
   position: relative;
   display: block;
@@ -6,16 +7,16 @@
   font-size: 1.7em;
   padding: 2.8rem 1.8rem 0.6rem;
   letter-spacing: -0.4px;
-  border: 2px solid var(--gray-1);
+  border: 2px solid $gray-1;
   border-radius: 7px;
-  color: var(--dark);
+  color: $dark;
   width: 100%;
   transition: border-color 0.3s ease-out;
 }
 
 .input:focus,
 .input:not(:placeholder-shown) {
-  border: 2px solid var(--dark);
+  border: 2px solid $dark;
 }
 
 .label {
@@ -28,7 +29,7 @@
   font-size: 1.7rem;
 
   letter-spacing: -0.4px;
-  color: var(--gray-1);
+  color: $gray-1;
   transform-origin: calc(1.8rem + 2px) 0;
   transition: transform 120ms ease-in;
 }
@@ -36,7 +37,7 @@
 .input:focus + .label,
 .input:not(:placeholder-shown) + .label {
   transform: translate(0, -0.3rem) scale(0.7);
-  color: var(--gray-1);
+  color: $gray-1;
 }
 
 @media screen and (max-width: 288px) {
@@ -47,7 +48,7 @@
   .input:focus + .label,
   .input:not(:placeholder-shown) + .label {
     transform: translate(0, 0.3rem) scale(0.7);
-    color: var(--gray-1);
+    color: $gray-1;
   }
 }
 @media screen and (min-width: 13rem) {

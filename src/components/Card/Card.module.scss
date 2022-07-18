@@ -1,5 +1,6 @@
+@import "./../../variables";
 .container {
-  background-color: var(--white);
+  background-color: $white;
   padding: 50px 60px;
   display: flex;
   flex-direction: column;

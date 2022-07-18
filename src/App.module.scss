@@ -1,3 +1,4 @@
+@import "variables";
 .container {
   max-width: 555px;
   margin: auto;
@@ -32,7 +33,7 @@
 .joke {
   font-style: italic;
   font-weight: 600;
-  color: var(--dark);
+  color: $dark;
   font-size: 1.8rem;
   margin-bottom: 3rem;
 }

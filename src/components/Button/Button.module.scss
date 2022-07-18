@@ -1,3 +1,4 @@
+@import "./../../variables";
 .button {
   border: 0;
   border-radius: 7px;
@@ -19,14 +20,14 @@
   width: 100%;
 }
 .button--dark {
-  background-color: var(--dark);
-  color: var(--white);
+  background-color: $dark;
+  color: $white;
 }
 
 .button--gray {
-  background-color: var(--gray-2);
+  background-color: $gray-2;
 }
 
 .button--red {
-  background-color: var(--red-error);
+  background-color: $red-error;
 }

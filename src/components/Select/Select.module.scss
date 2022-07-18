@@ -1,3 +1,4 @@
+@import "./../../variables";
 .container {
   flex-direction: column;
   position: relative;
@@ -34,8 +35,8 @@
 }
 
 .closed {
-  color: var(--gray-1);
-  border: 2px solid var(--gray-1);
+  color: $gray-1;
+  border: 2px solid $gray-1;
   padding: 1.8rem 1.8rem 1.6rem;
 }
 .dropdown {
@@ -47,8 +48,8 @@
   left: 0;
   top: 0;
   z-index: 1;
-  background-color: var(--white);
-  border: 2px solid var(--gray-1);
+  background-color: $white;
+  border: 2px solid $gray-1;
 
   visibility: hidden;
   max-height: 0;
@@ -62,13 +63,13 @@
 }
 .cancelButton {
   padding: 1.8rem 0 1.6rem 0.8rem;
-  color: var(--gray-1);
+  color: $gray-1;
 }
 .radio {
   display: none;
 }
 .option {
-  color: var(--dark);
+  color: $dark;
   padding: 1.8rem 0.8rem 1.6rem;
   display: flex;
   align-items: center;
@@ -76,16 +77,16 @@
 }
 
 .option:hover {
-  background-color: var(--gray-1);
+  background-color: $gray-1;
   font-weight: 500;
 }
 
 .optionSelected {
-  background-color: var(--gray-2);
+  background-color: $gray-2;
 }
 
 .dark {
-  color: var(--dark);
-  border-color: var(--dark);
+  color: $dark;
+  border-color: $dark;
   font-weight: 500;
 }
