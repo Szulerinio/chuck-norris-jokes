@@ -2,27 +2,27 @@
 .container {
   flex-direction: column;
   position: relative;
-}
-.container::before {
-  top: 0;
-  right: 2rem;
-  height: 100%;
-  width: 1rem;
-  position: absolute;
-  content: "";
-  background-image: url("./../../assets/icons/arrow.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.5;
-  z-index: 100;
-  pointer-events: none;
+  &::before {
+    top: 0;
+    right: 2rem;
+    height: 100%;
+    width: 1rem;
+    position: absolute;
+    content: "";
+    background-image: url("./../../assets/icons/arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+    z-index: 100;
+    pointer-events: none;
 
-  transition: transform 120ms ease-in, opacity 120ms ease-in;
-}
-.container[data-isexpanded="true"]::before {
-  transform: translate(-0.5rem, 0) rotate(180deg);
-  opacity: 1;
+    transition: transform 120ms ease-in, opacity 120ms ease-in;
+  }
+  &[data-isexpanded="true"]::before {
+    transform: translate(-0.5rem, 0) rotate(180deg);
+    opacity: 1;
+  }
 }
 
 .select {
@@ -74,11 +74,11 @@
   display: flex;
   align-items: center;
   transition: background-color 0.3s;
-}
 
-.option:hover {
-  background-color: $gray-1;
-  font-weight: 500;
+  &:hover {
+    background-color: $gray-1;
+    font-weight: 500;
+  }
 }
 
 .optionSelected {

@@ -17,30 +17,43 @@
   border: none;
   color: $dark;
   border: none;
-
   width: 100%;
-}
-input:focus {
-  border: none;
-  outline: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+  &[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
-}
 .sign {
   width: 2.5rem;
   height: 2.5rem;
 }
 .signContainer {
   padding: 0 0.4px;
+  &:hover {
+    .horizontalPath {
+      transform: scaleY(3);
+    }
+
+    .verticalPath {
+      transform: scaleX(3);
+    }
+
+    .circleBackground {
+      opacity: 1;
+      stroke-width: 0;
+    }
+  }
 }
 
 .circleBackground {
@@ -55,16 +68,4 @@ input[type="number"] {
 .horizontalPath {
   transform-origin: 0px 22px;
   transition: transform 0.3s ease-out;
-}
-.signContainer:hover .horizontalPath {
-  transform: scaleY(3);
-}
-
-.signContainer:hover .verticalPath {
-  transform: scaleX(3);
-}
-
-.signContainer:hover .circleBackground {
-  opacity: 1;
-  stroke-width: 0;
 }

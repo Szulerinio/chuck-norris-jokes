@@ -16,6 +16,10 @@
   background-size: cover;
   background-image: url("assets/images/Chuck.jpg");
   background-position: 0px -30px;
+
+  @media screen and (max-width: 440px) {
+    background-position: 0px 0px;
+  }
 }
 .unknown {
   background-image: url("assets/images/unknown_person.jpeg");
@@ -24,35 +28,24 @@
   background-position: center;
 }
 
-@media screen and (max-width: 440px) {
-  .chuck {
-    background-position: 0px 0px;
-  }
-}
-
 .joke {
   font-style: italic;
   font-weight: 600;
   color: $dark;
   font-size: 1.8rem;
   margin-bottom: 3rem;
+  &::before,
+  &::after {
+    content: '"';
+  }
 }
 
-.joke::before {
-  content: '"';
-}
-.joke::after {
-  content: '"';
-  position: relative;
-}
 .downloads {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 10px;
-}
 
-@media screen and (max-width: 480px) {
-  .downloads {
+  @media screen and (max-width: 480px) {
     grid-template-columns: 1fr;
     gap: 20px;
   }
