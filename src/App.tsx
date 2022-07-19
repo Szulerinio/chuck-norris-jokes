@@ -30,17 +30,18 @@ function App() {
 
   const downloadJokesFormik = useFormik({
     initialValues: {
-      numberOfJokesToFetch: 0,
+      numberOfJokesToFetch: "0",
     },
     validationSchema: Yup.object({
       numberOfJokesToFetch: Yup.number()
-        .max(100, "Too many jokes")
-        .min(1, "Provide a nubmer higher than 0"),
+        .max(100, "Provide a number up to 100")
+        .min(1, "Provide a nubmer higher than 0")
+        .required("Provide a number"),
     }),
     onSubmit: (values) => {
       console.log(values.numberOfJokesToFetch);
-
-      downloadJokes(values.numberOfJokesToFetch);
+      const val = parseInt(values.numberOfJokesToFetch);
+      downloadJokes(isNaN(val) ? 0 : val);
     },
   });
 
@@ -140,17 +141,16 @@ function App() {
         </Button>
         <div className={styles.downloads}>
           <NumberPicker
-            value={downloadJokesFormik.values.numberOfJokesToFetch.toString()}
+            value={downloadJokesFormik.values.numberOfJokesToFetch}
             onChange={(event) => {
-              downloadJokesFormik.setFieldValue(
-                "numberOfJokesToFetch",
-                parseInt(event.target.value)
-              );
+              const value = event.target.value;
+              downloadJokesFormik.setFieldValue("numberOfJokesToFetch", value);
             }}
             onButtonClick={(valueChange: number) => {
               downloadJokesFormik.setFieldValue(
                 "numberOfJokesToFetch",
-                downloadJokesFormik.values.numberOfJokesToFetch + valueChange
+                Number(downloadJokesFormik.values.numberOfJokesToFetch) +
+                  valueChange
               );
             }}
           ></NumberPicker>
@@ -167,12 +167,12 @@ function App() {
             }}
           >
             {t("saveJoke", {
-              count: downloadJokesFormik.values.numberOfJokesToFetch,
+              count: Number(downloadJokesFormik.values.numberOfJokesToFetch),
             })}
           </Button>
 
           {downloadJokesFormik.errors.numberOfJokesToFetch && (
-            <span> {downloadJokesFormik.errors.numberOfJokesToFetch}</span>
+            <span>{downloadJokesFormik.errors.numberOfJokesToFetch}</span>
           )}
         </div>
       </Card>
