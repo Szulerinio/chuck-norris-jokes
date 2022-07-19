@@ -14,7 +14,8 @@ import {
 import { downloadBlob } from "./functions/download";
 import Spinner from "./assets/icons/Spinner/Spinner";
 import { useFormik } from "formik";
-import { DownloadJokesFormikValues, DownloadJokesFormikErrors } from "./types";
+import * as Yup from "yup";
+
 function App() {
   const [name, setName] = useState("");
   const [type, setType] = useState<string[]>([]);
@@ -26,15 +27,11 @@ function App() {
     initialValues: {
       numberOfJokesToFetch: 0,
     },
-    validate: (values: DownloadJokesFormikValues) => {
-      const errors: DownloadJokesFormikErrors = {};
-      if (!values.numberOfJokesToFetch || values.numberOfJokesToFetch < 1) {
-        errors.numberOfJokesToFetch = "Provide a nubmer higher than 0";
-      } else if (values.numberOfJokesToFetch > 100) {
-        errors.numberOfJokesToFetch = "Too many jokes";
-      }
-      return errors;
-    },
+    validationSchema: Yup.object({
+      numberOfJokesToFetch: Yup.number()
+        .max(100, "Too many jokes")
+        .min(1, "Provide a nubmer higher than 0"),
+    }),
     onSubmit: (values) => {
       console.log(values.numberOfJokesToFetch);
 
@@ -148,9 +145,9 @@ function App() {
             Save Jokes
           </Button>
 
-          {downloadJokesFormik.errors.numberOfJokesToFetch
-            ? downloadJokesFormik.errors.numberOfJokesToFetch
-            : null}
+          {downloadJokesFormik.errors.numberOfJokesToFetch && (
+            <span> downloadJokesFormik.errors.numberOfJokesToFetch</span>
+          )}
         </div>
       </Card>
     </div>
