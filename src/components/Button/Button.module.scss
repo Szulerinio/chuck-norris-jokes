@@ -1,3 +1,4 @@
+@import "./../../variables";
 .button {
   border: 0;
   border-radius: 7px;
@@ -10,23 +11,22 @@
   letter-spacing: -0.4px;
   overflow-wrap: break-word;
   transition: background-color 0.3s ease-out, color 0.3s ease-out;
-}
-.button.disabled {
-  cursor: default;
-}
 
-.button--wide {
-  width: 100%;
-}
-.button--dark {
-  background-color: var(--dark);
-  color: var(--white);
-}
+  &.disabled {
+    cursor: default;
+  }
 
-.button--gray {
-  background-color: var(--gray-2);
-}
-
-.button--red {
-  background-color: var(--red-error);
+  &--wide {
+    width: 100%;
+  }
+  &--dark {
+    background-color: $dark;
+    color: $white;
+  }
+  &--gray {
+    background-color: $gray-2;
+  }
+  &--red {
+    background-color: $red-error;
+  }
 }

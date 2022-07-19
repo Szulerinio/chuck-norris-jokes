@@ -1,4 +1,4 @@
-import styles from "./Button.module.css";
+import styles from "./Button.module.scss";
 import ButtonColors from "./types";
 const Button = ({
   children,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "./App.css";
+import styles from "./App.module.scss";
 import Button from "./components/Button/Button";
 import ButtonColors from "./components/Button/types";
 import Input from "./components/Input/Input";
@@ -12,16 +12,21 @@ import {
   fetchMultipleJokes,
 } from "./functions/fetchJoke";
 import { downloadBlob } from "./functions/download";
+import { ResponseStatus } from "./functions/types";
 import Spinner from "./assets/icons/Spinner/Spinner";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const [name, setName] = useState("");
   const [type, setType] = useState<string[]>([]);
   const [isJokeLoading, setIsJokeLoading] = useState(false);
   const [joke, setJoke] = useState("");
-  const [categories, setCategories] = useState([]);
+
+  const { t, i18n } = useTranslation();
+
+  const [categories, setCategories] = useState<string[]>([]);
 
   const downloadJokesFormik = useFormik({
     initialValues: {
@@ -56,7 +61,11 @@ function App() {
     setIsJokeLoading(true);
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
-        setJoke(res.joke);
+        if (res.status === ResponseStatus.Success) {
+          setJoke(res.data.joke);
+        } else {
+          console.log("Error:", res.data);
+        }
         setIsJokeLoading(false);
       });
       return;
@@ -64,36 +73,51 @@ function App() {
 
     const nameArray = name.trim().split(" ");
     const lastName = nameArray.pop();
-    const firstName = nameArray.join("%20");
+    const firstName = nameArray.join(" ");
     fetchRandomJoke(firstName, lastName, category).then((res) => {
-      setJoke(res.joke);
+      if (res.status === ResponseStatus.Success) {
+        setJoke(res.data.joke);
+      } else {
+        console.log("Error:", res.data);
+      }
       setIsJokeLoading(false);
     });
   }, []);
 
   useEffect(() => {
     drawJoke();
-    fetchCategories().then((categories) => setCategories(categories));
+    fetchCategories().then((categories) => setCategories(categories.data));
   }, [drawJoke]);
 
   const downloadJokes = async (amount: number) => {
-    const file = await fetchMultipleJokes(amount)
-      .then((res) => res.map((obj: { id: number; joke: string }) => obj.joke))
-      .then((res) => new Blob(res));
-    downloadBlob(file);
+    const jokes = await fetchMultipleJokes(amount);
+
+    if (jokes.status === ResponseStatus.Success) {
+      const file = jokes.data.map(
+        (obj: { id: number; joke: string }) => obj.joke
+      );
+      const blob = new Blob(file);
+      downloadBlob(blob);
+    } else {
+      console.log("Error:", jokes.data);
+    }
   };
 
   return (
-    <div className={"container"}>
+    <div className={styles.container}>
       <Card>
-        <div className={`image ${name === "" ? "chuck" : "unknown"}`}></div>
+        <div
+          className={`${styles.image} ${
+            name === "" ? styles.chuck : styles.unknown
+          }`}
+        ></div>
 
-        {isJokeLoading ? <Spinner /> : <p className="joke">{joke}</p>}
+        {isJokeLoading ? <Spinner /> : <p className={styles.joke}>{joke}</p>}
         <Select
           style={{ marginBottom: "1.6rem" }}
           value={type}
-          name={"Categories"}
-          nameOnAction={"Select category"}
+          name={t("categories")}
+          nameOnAction={t("selectCategory")}
           options={categories}
           onChange={(value) => {
             handleTypeChange(value);
@@ -102,7 +126,7 @@ function App() {
         <Input
           style={{ marginBottom: "3.3rem" }}
           value={name}
-          label="Impersonate Chuck Norris"
+          label={t("impersonate")}
           onChange={(event) => setName(event.target.value)}
         />
         <Button
@@ -114,7 +138,7 @@ function App() {
         >
           {`Draw a random ${name === "" ? "Chuck Norris" : name} Joke`}
         </Button>
-        <div className="downloads">
+        <div className={styles.downloads}>
           <NumberPicker
             value={downloadJokesFormik.values.numberOfJokesToFetch.toString()}
             onChange={(event) => {
@@ -142,11 +166,13 @@ function App() {
               downloadJokesFormik.handleSubmit();
             }}
           >
-            Save Jokes
+            {t("saveJoke", {
+              count: downloadJokesFormik.values.numberOfJokesToFetch,
+            })}
           </Button>
 
           {downloadJokesFormik.errors.numberOfJokesToFetch && (
-            <span> downloadJokesFormik.errors.numberOfJokesToFetch</span>
+            <span> {downloadJokesFormik.errors.numberOfJokesToFetch}</span>
           )}
         </div>
       </Card>
