@@ -98,7 +98,7 @@ function App() {
           style={{ marginBottom: "1.6rem" }}
           value={type}
           name={t("categories")}
-          nameOnAction={"Select category"}
+          nameOnAction={t("selectCategory")}
           options={categories}
           onChange={(value) => {
             handleTypeChange(value);
@@ -107,7 +107,7 @@ function App() {
         <Input
           style={{ marginBottom: "3.3rem" }}
           value={name}
-          label={t("Impersonate")}
+          label={t("impersonate")}
           onChange={(event) => setName(event.target.value)}
         />
         <Button
@@ -139,7 +139,7 @@ function App() {
             disabled={numberOfJokesToFetch < 1 || numberOfJokesToFetch > 100}
             onClick={() => downloadJokes(numberOfJokesToFetch)}
           >
-            {t("Save joke", { count: numberOfJokesToFetch })}
+            {t("saveJoke", { count: numberOfJokesToFetch })}
           </Button>
         </div>
       </Card>

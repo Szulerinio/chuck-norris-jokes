@@ -4,11 +4,11 @@ import { initReactI18next } from "react-i18next";
 export const resources = {
   en: {
     translation: {
-      "Save joke_one": "Save Joke",
-      "Save joke_other": "Save Jokes",
-      Impersonate: "Impersonate Chuck Norris",
+      saveJoke_one: "Save Joke",
+      saveJoke_other: "Save Jokes",
+      impersonate: "Impersonate Chuck Norris",
       categories: "Categories",
-      "Select category": "Select category",
+      selectCategory: "Select category",
     },
   },
 };
