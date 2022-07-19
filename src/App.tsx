@@ -34,9 +34,9 @@ function App() {
     },
     validationSchema: Yup.object({
       numberOfJokesToFetch: Yup.number()
-        .max(100, "Provide a number up to 100")
-        .min(1, "Provide a nubmer higher than 0")
-        .required("Provide a number"),
+        .max(100, t("error.tooHighNumber", { number: 100 }))
+        .min(1, t("error.tooLowNumber", { number: 0 }))
+        .required(t("error.provideNumber")),
     }),
     onSubmit: (values) => {
       console.log(values.numberOfJokesToFetch);

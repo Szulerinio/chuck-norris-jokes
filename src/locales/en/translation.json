@@ -4,5 +4,10 @@
   "saveJoke_other": "Save {{count}} Jokes",
   "impersonate": "Impersonate Chuck Norris",
   "categories": "Categories",
-  "selectCategory": "Select category"
+  "selectCategory": "Select category",
+  "error": {
+    "tooHighNumber": "Provide a number up to {{number}}",
+    "tooLowNumber": "Provide a number  higher than {{number}}",
+    "provideNumber": "Provide a number"
+  }
 }
