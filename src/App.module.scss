@@ -49,4 +49,11 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
+  .formError {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $red-error;
+    grid-column: 1 / -1;
+  }
 }

@@ -172,7 +172,9 @@ function App() {
           </Button>
 
           {downloadJokesFormik.errors.numberOfJokesToFetch && (
-            <span>{downloadJokesFormik.errors.numberOfJokesToFetch}</span>
+            <span className={styles.formError}>
+              {downloadJokesFormik.errors.numberOfJokesToFetch}
+            </span>
           )}
         </div>
       </Card>
