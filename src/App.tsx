@@ -13,6 +13,8 @@ import {
 } from "./functions/fetchJoke";
 import { downloadBlob } from "./functions/download";
 import Spinner from "./assets/icons/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
+
 function App() {
   const [name, setName] = useState("");
   const [type, setType] = useState<string[]>([]);
@@ -20,6 +22,8 @@ function App() {
   const [joke, setJoke] = useState("");
   const [categories, setCategories] = useState([]);
   const [numberOfJokesToFetch, setNumberOfJokesToFetch] = useState(0);
+
+  const { t, i18n } = useTranslation();
 
   const handleNumberOfJokesButtonsClick = (valueChange: number) => {
     setNumberOfJokesToFetch((prev) =>
@@ -93,8 +97,8 @@ function App() {
         <Select
           style={{ marginBottom: "1.6rem" }}
           value={type}
-          name={"Categories"}
-          nameOnAction={"Select category"}
+          name={t("categories")}
+          nameOnAction={t("selectCategory")}
           options={categories}
           onChange={(value) => {
             handleTypeChange(value);
@@ -103,7 +107,7 @@ function App() {
         <Input
           style={{ marginBottom: "3.3rem" }}
           value={name}
-          label="Impersonate Chuck Norris"
+          label={t("impersonate")}
           onChange={(event) => setName(event.target.value)}
         />
         <Button
@@ -135,7 +139,7 @@ function App() {
             disabled={numberOfJokesToFetch < 1 || numberOfJokesToFetch > 100}
             onClick={() => downloadJokes(numberOfJokesToFetch)}
           >
-            Save Jokes
+            {t("saveJoke", { count: numberOfJokesToFetch })}
           </Button>
         </div>
       </Card>
