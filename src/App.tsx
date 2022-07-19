@@ -23,10 +23,8 @@ function App() {
   const [type, setType] = useState<string[]>([]);
   const [isJokeLoading, setIsJokeLoading] = useState(false);
   const [joke, setJoke] = useState("");
-
-  const { t, i18n } = useTranslation();
-
   const [categories, setCategories] = useState<string[]>([]);
+  const { t, i18n } = useTranslation();
 
   const downloadJokesFormik = useFormik({
     initialValues: {
@@ -39,7 +37,6 @@ function App() {
         .required(t("error.provideNumber")),
     }),
     onSubmit: (values) => {
-      console.log(values.numberOfJokesToFetch);
       const val = parseInt(values.numberOfJokesToFetch);
       downloadJokes(isNaN(val) ? 0 : val);
     },
