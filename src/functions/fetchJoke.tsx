@@ -1,44 +1,35 @@
-const baseUrl = "http://api.icndb.com/jokes/random";
+import { getData, endpoints } from "./axiosClient";
+import { RandomJokeParameters } from "./types";
+
 const fetchRandomJoke = async (
   firstname?: string,
   lastname?: string,
   category: string[] = []
 ) => {
-  const lastNameParameter = lastname ? `&lastName=${lastname}` : "";
-  const firstNameParameter = firstname
-    ? `&firstName=${firstname}`
-    : lastname
-    ? "&firstName="
-    : "";
+  let parameters: RandomJokeParameters = {
+    escape: "javascript",
+  };
+  if (lastname) {
+    parameters.lastName = lastname;
+  }
+  if (firstname) {
+    parameters.firstName = firstname;
+  }
+  if (category?.length > 0) {
+    parameters.limitTo = `[${category?.join(",")}]`;
+  }
 
-  const limit = category?.length > 0 ? `&limitTo=[${category?.join(`,`)}]` : "";
-  const url = `${baseUrl}?escape=javascript${limit}${firstNameParameter}${lastNameParameter}`;
-
-  return fetch(url)
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.type === "success") return response.value;
-      else throw new Error("response");
-    });
+  return await getData(endpoints.jokes_random, parameters);
 };
 
 const fetchCategories = async () => {
-  return fetch("http://api.icndb.com/categories")
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.type === "success") return response.value;
-      else throw new Error("response");
-    });
+  const response = await getData(endpoints.categories, {});
+  return response;
 };
 
 const fetchMultipleJokes = async (amount: number) => {
-  const url = baseUrl + `/${amount}?escape=javascript`;
-  return fetch(url)
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.type === "success") return response.value;
-      else throw new Error("response");
-    });
+  const parameters: RandomJokeParameters = { escape: "javascript" };
+  return await getData(`${endpoints.jokes_random}/${amount}`, parameters);
 };
 
 export { fetchRandomJoke, fetchCategories, fetchMultipleJokes };
