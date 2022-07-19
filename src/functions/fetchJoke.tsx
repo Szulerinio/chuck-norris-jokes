@@ -19,7 +19,7 @@ const fetchRandomJoke = async (
     parameters.limitTo = `[${category?.join(",")}]`;
   }
 
-  return await getData(endpoints.jokes.random(), parameters);
+  return await getData(endpoints.jokes_random, parameters);
 };
 
 const fetchCategories = async () => {
@@ -29,7 +29,7 @@ const fetchCategories = async () => {
 
 const fetchMultipleJokes = async (amount: number) => {
   const parameters: RandomJokeParameters = { escape: "javascript" };
-  return await getData(endpoints.jokes.random(amount), parameters);
+  return await getData(`${endpoints.jokes_random}/${amount}`, parameters);
 };
 
 export { fetchRandomJoke, fetchCategories, fetchMultipleJokes };
