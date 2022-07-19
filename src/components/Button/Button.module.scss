@@ -1,0 +1,32 @@
+@import "./../../variables";
+.button {
+  border: 0;
+  border-radius: 7px;
+  padding: 1.8rem 1.8rem;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.7rem;
+  letter-spacing: -0.4px;
+  overflow-wrap: break-word;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+
+  &.disabled {
+    cursor: default;
+  }
+
+  &--wide {
+    width: 100%;
+  }
+  &--dark {
+    background-color: $dark;
+    color: $white;
+  }
+  &--gray {
+    background-color: $gray-2;
+  }
+  &--red {
+    background-color: $red-error;
+  }
+}

@@ -1,0 +1,36 @@
+@import "./../../../variables";
+.svg {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.square {
+  stroke: $dark;
+  stroke-width: 2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  fill: $gray-1;
+}
+.squareChecked {
+}
+
+.squareUnchecked {
+  opacity: 1;
+}
+
+.checkmarkBackground {
+  fill: green;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.checkmarkBackgroundChecked {
+  opacity: 1;
+}
+.checkmarkBackgroundUnchecked {
+}
+
+.checkmarkChecked {
+}
+.checkmarkUnchecked {
+}
