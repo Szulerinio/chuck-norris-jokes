@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "./App.css";
+import styles from "./App.module.scss";
 import Button from "./components/Button/Button";
 import ButtonColors from "./components/Button/types";
 import Input from "./components/Input/Input";
@@ -89,11 +89,15 @@ function App() {
   };
 
   return (
-    <div className={"container"}>
+    <div className={styles.container}>
       <Card>
-        <div className={`image ${name === "" ? "chuck" : "unknown"}`}></div>
+        <div
+          className={`${styles.image} ${
+            name === "" ? styles.chuck : styles.unknown
+          }`}
+        ></div>
 
-        {isJokeLoading ? <Spinner /> : <p className="joke">{joke}</p>}
+        {isJokeLoading ? <Spinner /> : <p className={styles.joke}>{joke}</p>}
         <Select
           style={{ marginBottom: "1.6rem" }}
           value={type}
@@ -119,7 +123,7 @@ function App() {
         >
           {`Draw a random ${name === "" ? "Chuck Norris" : name} Joke`}
         </Button>
-        <div className="downloads">
+        <div className={styles.downloads}>
           <NumberPicker
             value={numberOfJokesToFetch.toString()}
             onChange={(event) => {

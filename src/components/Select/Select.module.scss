@@ -1,27 +1,28 @@
+@import "./../../variables";
 .container {
   flex-direction: column;
   position: relative;
-}
-.container::before {
-  top: 0;
-  right: 2rem;
-  height: 100%;
-  width: 1rem;
-  position: absolute;
-  content: "";
-  background-image: url("./../../assets/icons/arrow.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.5;
-  z-index: 100;
-  pointer-events: none;
+  &::before {
+    top: 0;
+    right: 2rem;
+    height: 100%;
+    width: 1rem;
+    position: absolute;
+    content: "";
+    background-image: url("./../../assets/icons/arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+    z-index: 100;
+    pointer-events: none;
 
-  transition: transform 120ms ease-in, opacity 120ms ease-in;
-}
-.container[data-isexpanded="true"]::before {
-  transform: translate(-0.5rem, 0) rotate(180deg);
-  opacity: 1;
+    transition: transform 120ms ease-in, opacity 120ms ease-in;
+  }
+  &[data-isexpanded="true"]::before {
+    transform: translate(-0.5rem, 0) rotate(180deg);
+    opacity: 1;
+  }
 }
 
 .select {
@@ -34,8 +35,8 @@
 }
 
 .closed {
-  color: var(--gray-1);
-  border: 2px solid var(--gray-1);
+  color: $gray-1;
+  border: 2px solid $gray-1;
   padding: 1.8rem 1.8rem 1.6rem;
 }
 .dropdown {
@@ -47,8 +48,8 @@
   left: 0;
   top: 0;
   z-index: 1;
-  background-color: var(--white);
-  border: 2px solid var(--gray-1);
+  background-color: $white;
+  border: 2px solid $gray-1;
 
   visibility: hidden;
   max-height: 0;
@@ -62,30 +63,30 @@
 }
 .cancelButton {
   padding: 1.8rem 0 1.6rem 0.8rem;
-  color: var(--gray-1);
+  color: $gray-1;
 }
 .radio {
   display: none;
 }
 .option {
-  color: var(--dark);
+  color: $dark;
   padding: 1.8rem 0.8rem 1.6rem;
   display: flex;
   align-items: center;
   transition: background-color 0.3s;
-}
 
-.option:hover {
-  background-color: var(--gray-1);
-  font-weight: 500;
+  &:hover {
+    background-color: $gray-1;
+    font-weight: 500;
+  }
 }
 
 .optionSelected {
-  background-color: var(--gray-2);
+  background-color: $gray-2;
 }
 
 .dark {
-  color: var(--dark);
-  border-color: var(--dark);
+  color: $dark;
+  border-color: $dark;
   font-weight: 500;
 }

@@ -1,4 +1,4 @@
-import styles from "./CheckboxImage.module.css";
+import styles from "./CheckboxImage.module.scss";
 const CheckboxImage = ({ checked }: { checked: boolean }) => {
   return (
     <svg

@@ -1,4 +1,4 @@
-import styles from "./Select.module.css";
+import styles from "./Select.module.scss";
 import { useEffect, useRef, useState } from "react";
 import CheckboxImage from "../../assets/icons/CheckboxImage/CheckboxImage";
 

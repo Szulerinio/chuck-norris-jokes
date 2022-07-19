@@ -1,13 +1,12 @@
+@import "./../../variables";
 .container {
-  background-color: var(--white);
+  background-color: $white;
   padding: 50px 60px;
   display: flex;
   flex-direction: column;
   border-radius: 7px;
   box-shadow: #0002 0 0 5px;
-}
-@media screen and (max-width: 600px) {
-  .container {
+  @media screen and (max-width: 600px) {
     padding: 50px 10vw;
   }
 }

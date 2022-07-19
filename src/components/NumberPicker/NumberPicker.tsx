@@ -1,4 +1,4 @@
-import styles from "./NumberPicker.module.css";
+import styles from "./NumberPicker.module.scss";
 import Button from "./../Button/Button";
 import ButtonColors from "../Button/types";
 const NumberPicker = ({
