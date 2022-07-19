@@ -4,8 +4,8 @@ import { initReactI18next } from "react-i18next";
 export const resources = {
   en: {
     translation: {
-      saveJoke_one: "Save Joke",
-      saveJoke_other: "Save Jokes",
+      saveJoke_one: "Save a Joke",
+      saveJoke_other: "Save {{count}} Jokes",
       impersonate: "Impersonate Chuck Norris",
       categories: "Categories",
       selectCategory: "Select category",
