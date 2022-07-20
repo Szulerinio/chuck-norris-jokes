@@ -137,7 +137,7 @@ function App() {
             drawJoke(name, type);
           }}
         >
-          {`Draw a random ${name === "" ? "Chuck Norris" : name} Joke`}
+          {t("drawJoke", { name: name === "" ? "Chuck Norris" : name })}
         </Button>
         <div className={styles.downloads}>
           <NumberPicker
