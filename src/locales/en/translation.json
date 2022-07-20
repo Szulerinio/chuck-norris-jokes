@@ -1,9 +1,13 @@
 {
-  "saveJoke_zero": "Save a Joke",
-  "saveJoke_one": "Save a Joke",
   "saveJoke_other": "Save {{count}} Jokes",
+  "saveJoke_interval": "(0-1)[Save a Joke];",
   "impersonate": "Impersonate Chuck Norris",
   "drawJoke": "Draw a random {{name}} Joke",
   "categories": "Categories",
-  "selectCategory": "Select category"
+  "selectCategory": "Select category",
+  "error": {
+    "tooHighNumber": "Provide a number up to {{number}}",
+    "tooLowNumber": "Provide a number  higher than {{number}}",
+    "provideNumber": "Provide a number"
+  }
 }
