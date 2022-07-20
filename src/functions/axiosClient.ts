@@ -14,7 +14,7 @@ const getData = async (endpoint: string, params: RandomJokeParameters) => {
     const responseData = response.data;
 
     if (responseData.type !== "success") {
-      throw new Error("response failed");
+      throw new Error("Improper request");
     }
     return { status: ResponseStatus.Success, data: responseData.value };
   } catch (err) {
@@ -26,7 +26,10 @@ const getData = async (endpoint: string, params: RandomJokeParameters) => {
       }
       return { status: ResponseStatus.Error, data: err.message };
     }
-    return { status: ResponseStatus.Error, data: err };
+    if (err instanceof Error) {
+      return { status: ResponseStatus.Error, data: err.message };
+    }
+    return { status: ResponseStatus.Error, data: "Error" };
   }
 };
 
