@@ -63,14 +63,11 @@ function App() {
     setIsJokeLoading(true);
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
-        console.log(res);
-
         if (res.status === ResponseStatus.Success) {
           setJoke(res.data.joke);
           setJokeError("");
         } else {
           setJokeError(res.data);
-          console.log("Error:", res.data);
         }
         setIsJokeLoading(false);
       });
@@ -86,7 +83,6 @@ function App() {
         setJokeError("");
       } else {
         setJokeError(res.data);
-        console.log("Error:", res.data.message);
       }
       setIsJokeLoading(false);
     });
@@ -112,7 +108,6 @@ function App() {
       downloadBlob(blob);
     } else {
       alert(jokes.data);
-      console.log("Error:", jokes.data);
     }
   };
 
