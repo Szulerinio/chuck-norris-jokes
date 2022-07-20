@@ -20,6 +20,7 @@ function App() {
   const [name, setName] = useState("");
   const [type, setType] = useState<string[]>([]);
   const [isJokeLoading, setIsJokeLoading] = useState(false);
+  const [jokeError, setJokeError] = useState<string>("");
   const [joke, setJoke] = useState("");
   const [categories, setCategories] = useState<string[]>([]);
   const [numberOfJokesToFetch, setNumberOfJokesToFetch] = useState(0);
@@ -62,9 +63,13 @@ function App() {
     setIsJokeLoading(true);
     if (name === undefined) {
       fetchRandomJoke().then((res) => {
+        console.log(res);
+
         if (res.status === ResponseStatus.Success) {
           setJoke(res.data.joke);
+          setJokeError("");
         } else {
+          setJokeError(res.data);
           console.log("Error:", res.data);
         }
         setIsJokeLoading(false);
@@ -78,8 +83,10 @@ function App() {
     fetchRandomJoke(firstName, lastName, category).then((res) => {
       if (res.status === ResponseStatus.Success) {
         setJoke(res.data.joke);
+        setJokeError("");
       } else {
-        console.log("Error:", res.data);
+        setJokeError(res.data);
+        console.log("Error:", res.data.message);
       }
       setIsJokeLoading(false);
     });
@@ -87,7 +94,11 @@ function App() {
 
   useEffect(() => {
     drawJoke();
-    fetchCategories().then((categories) => setCategories(categories.data));
+    fetchCategories().then((categories) =>
+      categories.status === ResponseStatus.Success
+        ? setCategories(categories.data)
+        : []
+    );
   }, [drawJoke]);
 
   const downloadJokes = async (amount: number) => {
@@ -100,6 +111,7 @@ function App() {
       const blob = new Blob(file);
       downloadBlob(blob);
     } else {
+      alert(jokes.data);
       console.log("Error:", jokes.data);
     }
   };
@@ -113,7 +125,13 @@ function App() {
           }`}
         ></div>
 
-        {isJokeLoading ? <Spinner /> : <p className={styles.joke}>{joke}</p>}
+        {isJokeLoading ? (
+          <Spinner />
+        ) : jokeError?.length > 0 ? (
+          <p>{`error: ${jokeError}`}</p>
+        ) : (
+          <p className={styles.joke}>{joke}</p>
+        )}
         <Select
           style={{ marginBottom: "1.6rem" }}
           value={type}
