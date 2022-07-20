@@ -128,7 +128,7 @@ function App() {
         {isJokeLoading ? (
           <Spinner />
         ) : jokeError?.length > 0 ? (
-          <p>{`error: ${jokeError}`}</p>
+          <p className={styles.loadError}>{`error: ${jokeError}`}</p>
         ) : (
           <p className={styles.joke}>{joke}</p>
         )}
