@@ -1,7 +1,6 @@
 {
-  "saveJoke_zero": "Save a Joke",
-  "saveJoke_one": "Save a Joke",
   "saveJoke_other": "Save {{count}} Jokes",
+  "saveJoke_interval": "(0-1)[Save a Joke];",
   "impersonate": "Impersonate Chuck Norris",
   "categories": "Categories",
   "selectCategory": "Select category",

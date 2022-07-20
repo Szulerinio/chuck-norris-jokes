@@ -163,7 +163,8 @@ function App() {
               downloadJokesFormik.handleSubmit();
             }}
           >
-            {t("saveJoke", {
+            {t("saveJoke_interval", {
+              postProcess: "interval",
               count: Number(downloadJokesFormik.values.numberOfJokesToFetch),
             })}
           </Button>
