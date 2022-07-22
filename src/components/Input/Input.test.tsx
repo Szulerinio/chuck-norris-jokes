@@ -22,14 +22,14 @@ describe("Input component", () => {
     expect(inputElement).toBeInTheDocument();
   });
 
-  test("run onChange on keypress", async () => {
+  test("runs onChange on keypress", async () => {
     let value = "";
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       value += event.target.value;
     };
     render(<Input label={props.label} value={value} onChange={onChange} />);
     const inputElement = screen.getByRole<HTMLInputElement>("textbox");
-    await userEvent.type(inputElement, "Hello");
-    expect(value).toBe(`Hello`);
+    await userEvent.type(inputElement, "Hello World");
+    expect(value).toBe(`Hello World`);
   });
 });
