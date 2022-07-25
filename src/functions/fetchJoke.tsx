@@ -11,6 +11,7 @@ const fetchRandomJoke = async (
   };
   if (lastname) {
     parameters.lastName = lastname;
+    parameters.firstName = "";
   }
   if (firstname) {
     parameters.firstName = firstname;
