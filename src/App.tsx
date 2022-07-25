@@ -33,6 +33,7 @@ function App() {
   };
 
   const downloadJokesFormik = useFormik({
+    validateOnMount: true,
     initialValues: {
       numberOfJokesToFetch: "0",
     },
@@ -104,6 +105,7 @@ function App() {
         : []
     );
   }, [drawJoke]);
+  useEffect(() => {});
 
   const downloadJokes = async (amount: number) => {
     const jokes = await fetchMultipleJokes(amount);
