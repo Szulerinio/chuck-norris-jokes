@@ -33,7 +33,9 @@ function App() {
   };
 
   const downloadJokesFormik = useFormik({
-    validateOnMount: true,
+    initialErrors: {
+      numberOfJokesToFetch: " ",
+    },
     initialValues: {
       numberOfJokesToFetch: "0",
     },
