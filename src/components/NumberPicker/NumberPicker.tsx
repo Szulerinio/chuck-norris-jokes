@@ -5,13 +5,17 @@ const NumberPicker = ({
   value,
   onChange,
   onButtonClick,
+  outOfRange,
 }: {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onButtonClick: (valueChange: number) => void;
+  outOfRange: boolean;
 }) => {
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${outOfRange ? styles.outOfRange : null}`}
+    >
       <Button
         className={styles.signContainer}
         color={ButtonColors.Gray}

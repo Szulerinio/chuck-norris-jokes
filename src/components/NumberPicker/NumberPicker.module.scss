@@ -8,17 +8,21 @@
   max-width: 20rem;
   margin: auto;
   border-radius: 7px;
+  &.outOfRange {
+    background-color: $red-error;
+  }
 }
+
 .input {
   font-size: 1.7em;
   letter-spacing: -0.4px;
-  background-color: $gray-2;
   text-align: center;
   border: none;
   color: $dark;
   border: none;
   width: 100%;
 
+  background-color: transparent;
   &:focus {
     border: none;
     outline: none;
@@ -40,6 +44,8 @@
 }
 .signContainer {
   padding: 0 0.4px;
+
+  background-color: transparent;
   &:hover {
     .horizontalPath {
       transform: scaleY(3);
@@ -50,14 +56,14 @@
     }
 
     .circleBackground {
-      opacity: 1;
+      opacity: 0.2;
       stroke-width: 0;
     }
   }
 }
 
 .circleBackground {
-  fill: $gray-1;
+  fill: black;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }

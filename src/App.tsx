@@ -27,14 +27,26 @@ function App() {
   const [categories, setCategories] = useState<string[]>([]);
   const { t, i18n } = useTranslation();
 
+  const jokesToDownloadRange = {
+    max: 100,
+    min: 0,
+  };
+
   const downloadJokesFormik = useFormik({
+    validateOnMount: true,
     initialValues: {
       numberOfJokesToFetch: "0",
     },
     validationSchema: Yup.object({
       numberOfJokesToFetch: Yup.number()
-        .max(100, t("error.tooHighNumber", { number: 100 }))
-        .min(1, t("error.tooLowNumber", { number: 0 }))
+        .max(
+          jokesToDownloadRange.max,
+          t("error.tooHighNumber", { number: jokesToDownloadRange.max })
+        )
+        .min(
+          jokesToDownloadRange.min + 1,
+          t("error.tooLowNumber", { number: jokesToDownloadRange.min })
+        )
         .required(t("error.provideNumber")),
     }),
     onSubmit: (values) => {
@@ -93,6 +105,7 @@ function App() {
         : []
     );
   }, [drawJoke]);
+  useEffect(() => {});
 
   const downloadJokes = async (amount: number) => {
     const jokes = await fetchMultipleJokes(amount);
@@ -151,6 +164,12 @@ function App() {
         </Button>
         <div className={styles.downloads}>
           <NumberPicker
+            outOfRange={
+              Number(downloadJokesFormik.values.numberOfJokesToFetch) >
+                jokesToDownloadRange.max ||
+              Number(downloadJokesFormik.values.numberOfJokesToFetch) <
+                jokesToDownloadRange.min
+            }
             value={downloadJokesFormik.values.numberOfJokesToFetch}
             onChange={(event) => {
               const value = event.target.value;
