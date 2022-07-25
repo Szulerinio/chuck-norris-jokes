@@ -122,7 +122,7 @@ function App() {
         ) : jokeError?.length > 0 ? (
           <p className={styles.loadError}>{`error: ${jokeError}`}</p>
         ) : (
-          <p className={styles.joke}>{joke}</p>
+          <p className={styles.joke}>{joke.trim()}</p>
         )}
         <Select
           style={{ marginBottom: "1.6rem" }}
