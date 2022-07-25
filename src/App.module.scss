@@ -34,6 +34,7 @@
   color: $dark;
   font-size: 1.8rem;
   margin-bottom: 3rem;
+  overflow-wrap: break-word;
   &::before,
   &::after {
     content: '"';
