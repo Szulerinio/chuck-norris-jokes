@@ -1,6 +1,6 @@
 {
-  "saveJoke_other": "Save {{count}} Jokes",
-  "saveJoke_interval": "(0-1)[Save a Joke];",
+  "saveJoke": "Save a Joke",
+  "saveJoke_interval": "(0-1)[Save a Joke];(2-inf)[Save {{count}} jokes];",
   "impersonate": "Impersonate Chuck Norris",
   "drawJoke": "Draw a random {{name}} Joke",
   "categories": "Categories",
